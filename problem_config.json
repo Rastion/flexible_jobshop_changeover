@@ -1,0 +1,40 @@
+{
+    "entry_point": "flexible_jobshop_changeover_problem:FlexibleJobShopChangeoverProblem",
+    "default_params": {
+      "instance_file": "instances/Mk01.fjsc"
+    },
+    "problem_type": "Flexible Job Shop Scheduling with Changeover",
+    "description": "In the flexible job shop scheduling problem with changeover, each job consists of an ordered sequence of operations that must be processed on compatible machines. The processing time of an operation depends on the chosen machine. Additionally, when two consecutive operations in a job are processed on different machines, a machine-dependent changeover time must be observed between them. The objective is to minimize the makespan, i.e., the time when all jobs are completed.",
+    "keywords": [
+      "job shop",
+      "scheduling",
+      "flexible",
+      "changeover",
+      "machine assignment",
+      "makespan"
+    ],
+    "data_format": {
+      "instance_file": {
+        "format": "A text file containing: the first line with two integers representing the number of jobs and the number of machines (plus an extra number that can be ignored); for each job, a line starting with the number of operations followed by, for each operation, the number of compatible machines and then pairs of integers (machine id and processing time) for each compatible machine (machine ids are 1-indexed); followed by, for each machine, a line with a list of integers representing the changeover times from that machine to all machines."
+      }
+    },
+    "decision_variables": {
+      "schedule": {
+        "type": "dictionary",
+        "description": "A mapping where each key is a job index (0-based) and the corresponding value is a list of operations. Each operation is represented as a dictionary with keys 'machine' (the chosen machine index), 'start' (the start time), and 'end' (the finish time)."
+      }
+    },
+    "objective": {
+      "type": "minimization",
+      "function": "max_{j in jobs} (end time of the last operation in job j)",
+      "description": "Minimize the makespan, defined as the maximum completion time over all jobs."
+    },
+    "solution_representation": "A dictionary mapping each job (0-indexed) to a list of operations, where each operation includes the assigned machine, start time, and end time.",
+    "compatible_optimizers": [
+      "genetic_algorithm",
+      "simulated_annealing",
+      "particle_swarm",
+      "tabu_search"
+    ]
+  }
+  
