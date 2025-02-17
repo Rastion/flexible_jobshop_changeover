@@ -1,5 +1,5 @@
 {
-    "entry_point": "flexible_jobshop_changeover_problem:FlexibleJobShopChangeoverProblem",
+    "entry_point": "flexiblejobshop_changeover_problem:FlexibleJobShopChangeoverProblem",
     "default_params": {
       "instance_file": "instances/Mk01.fjsc"
     },
